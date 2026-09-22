@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator's Nexus | Premium Asset Directory</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        base: '#030305',
+                        surface: '#0a0a0f',
+                        primary: '#6366f1',
+                        secondary: '#a855f7',
+                        accent: '#ec4899'
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite alternate',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards'
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Premium Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030305; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f1f2e; 
+            border-radius: 5px;
+            border: 2px solid #030305;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f5a; 
+        }
+
+        /* Glassmorphic Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+        }
+    </style>
+</head>
+<body class="bg-base text-gray-300 font-sans antialiased min-h-screen relative overflow-x-hidden selection:bg-primary selection:text-white">
+
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] rounded-full bg-primary/20 mix-blend-screen filter blur-[100px] opacity-60 animate-blob"></div>
+        <div class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full bg-secondary/10 mix-blend-screen filter blur-[120px] opacity-50 animate-blob" style="animation-delay: 2s;"></div>
+        <div class="absolute -bottom-[20%] left-[20%] w-[700px] h-[700px] rounded-full bg-accent/10 mix-blend-screen filter blur-[150px] opacity-40 animate-blob" style="animation-delay: 4s;"></div>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 glass-panel border-t-0 border-x-0 border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/20">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                </div>
+                <span class="text-xl font-bold text-white tracking-wide">Creator's <span class="text-secondary">Nexus</span></span>
+            </div>
+            
+            <!-- Filters -->
+            <nav class="flex overflow-x-auto max-w-full gap-2 pb-2 md:pb-0 hide-scrollbar" id="filter-container">
+                <button class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium transition-all bg-white/10 text-white border border-white/20 hover:bg-white/20" data-filter="all">All Tools</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-all bg-transparent text-gray-400 border border-transparent hover:text-white hover:bg-white/5" data-filter="audio-video">Audio & Video</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-all bg-transparent text-gray-400 border border-transparent hover:text-white hover:bg-white/5" data-filter="design-ui">Design & UI</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-all bg-transparent text-gray-400 border border-transparent hover:text-white hover:bg-white/5" data-filter="typography">Typography & Brands</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-all bg-transparent text-gray-400 border border-transparent hover:text-white hover:bg-white/5" data-filter="motion">Motion & Tools</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-40 pb-24 px-6">
+        <div class="max-w-4xl mx-auto text-center mb-20">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-xs font-semibold text-primary mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Updated for 2026
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                The Ultimate <br/> <span class="text-gradient">Editor Toolkit</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Elevate your creative workflow with our curated directory of high-end resources for video editors, motion designers, and UI/UX architects.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+            <div id="resources-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cards will be injected here via JS -->
+            </div>
+            
+            <!-- Empty state (hidden by default) -->
+            <div id="empty-state" class="hidden text-center py-20">
+                <svg class="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <h3 class="text-xl font-medium text-white mb-2">No resources found</h3>
+                <p class="text-gray-400">Try selecting a different category.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="relative z-10 border-t border-white/5 bg-surface/50 mt-12 py-10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-gray-500 text-sm">© 2026 Creator's Nexus. Crafted for the creative community.</p>
+            <div class="flex gap-4">
+                <a href="#" class="text-gray-500 hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Array for Resources
+        const resources = [
+            // Audio & Video
+            {
+                name: "Mixkit",
+                url: "https://mixkit.co",
+                desc: "Free stock video, sound effects, and project templates (Premiere Pro, After Effects, DaVinci).",
+                category: "Audio & Video",
+                filterId: "audio-video",
+                badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/20"
+            },
+            {
+                name: "Pexels & Pixabay",
+                url: "https://pexels.com",
+                desc: "Massive databases of CC0 (Creative Commons Zero) stock footage and high-res photography.",
+                category: "Audio & Video",
+                filterId: "audio-video",
+                badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+            },
+            {
+                name: "Freesound",
+                url: "https://freesound.org",
+                desc: "Collaborative, open-source platform providing community-uploaded Foley and atmospheric audio.",
+                category: "Audio & Video",
+                filterId: "audio-video",
+                badgeColor: "bg-teal-500/10 text-teal-400 border-teal-500/20"
+            },
+            {
+                name: "Uppbeat",
+                url: "https://uppbeat.io",
+                desc: "Freemium music and sound effects library tailored specifically for video creators and YouTubers.",
+                category: "Audio & Video",
+                filterId: "audio-video",
+                badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
+            },
+            
+            // Design & UI
+            {
+                name: "Cosmos.so",
+                url: "https://cosmos.so",
+                desc: "Visual discovery and curation platform built for creators to construct moodboards and references.",
+                category: "Design & UI",
+                filterId: "design-ui",
+                badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/20"
+            },
+            {
+                name: "Supahero",
+                url: "https://supahero.io",
+                desc: "A curated visual library of website hero sections designed strictly for UI/UX web designers.",
+                category: "Design & UI",
+                filterId: "design-ui",
+                badgeColor: "bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20"
+            },
+            {
+                name: "Pafolios",
+                url: "https://pafolios.com",
+                desc: "Curated directory showcasing over 800 of the best design portfolios and case studies on the web.",
+                category: "Design & UI",
+                filterId: "design-ui",
+                badgeColor: "bg-pink-500/10 text-pink-400 border-pink-500/20"
+            },
+            {
+                name: "Recent Design",
+                url: "https://recent.design",
+                desc: "Highly curated, daily-updated gallery of the best new web, app, and visual design work.",
+                category: "Design & UI",
+                filterId: "design-ui",
+                badgeColor: "bg-rose-500/10 text-rose-400 border-rose-500/20"
+            },
+
+            // Typography & Branding
+            {
+                name: "BestFreeFonts",
+                url: "https://bestfreefonts.com",
+                desc: "Curated directory of over 200 free fonts intended for commercial and personal design use.",
+                category: "Typography",
+                filterId: "typography",
+                badgeColor: "bg-orange-500/10 text-orange-400 border-orange-500/20"
+            },
+            {
+                name: "Logosystem",
+                url: "https://logosystem.co",
+                desc: "Free visual library of over 1,300 logo designs, wordmarks, symbols, and animated logos.",
+                category: "Typography",
+                filterId: "typography",
+                badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20"
+            },
+
+            // Motion & Tools
+            {
+                name: "Jitter.video",
+                url: "https://jitter.video",
+                desc: "Fast, web-based motion design and animation tool with Figma integration and rich exports.",
+                category: "Motion & Tools",
+                filterId: "motion",
+                badgeColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20"
+            },
+            {
+                name: "GitHub Creative",
+                url: "https://github.com/adammakesfilm/creative-resources",
+                desc: "An open-source index linking out to free cross-platform editing software and asset sites.",
+                category: "Motion & Tools",
+                filterId: "motion",
+                badgeColor: "bg-gray-500/10 text-gray-300 border-gray-500/30"
+            }
+        ];
+
+        const grid = document.getElementById('resources-grid');
+        const emptyState = document.getElementById('empty-state');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        // Render Cards Function
+        function renderCards(filter = 'all') {
+            grid.innerHTML = '';
+            
+            const filteredResources = filter === 'all' 
+                ? resources 
+                : resources.filter(res => res.filterId === filter);
+
+            if (filteredResources.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            filteredResources.forEach((resource, index) => {
+                const delay = index * 50; // Staggered animation delay
+                
+                const card = document.createElement('div');
+                card.className = `glass-card rounded-2xl p-6 flex flex-col h-full relative group opacity-0 animate-fade-in`;
+                card.style.animationDelay = `${delay}ms`;
+                
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="inline-block px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-bold border ${resource.badgeColor}">
+                            ${resource.category}
+                        </span>
+                        <a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300">
+                            <svg class="w-4 h-4 transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all">${resource.name}</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">${resource.desc}</p>
+                    
+                    <div class="pt-4 border-t border-white/5">
+                        <a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-300 hover:text-white transition-colors group/link">
+                            Visit Website
+                            <svg class="w-4 h-4 ml-1 transform transition-transform group-hover/link:translate-x-1 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Click Events
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state classes
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-white/10', 'text-white', 'border-white/20');
+                    b.classList.add('bg-transparent', 'text-gray-400', 'border-transparent');
+                });
+                
+                btn.classList.add('active', 'bg-white/10', 'text-white', 'border-white/20');
+                btn.classList.remove('bg-transparent', 'text-gray-400', 'border-transparent');
+
+                // Re-render
+                const filter = btn.getAttribute('data-filter');
+                renderCards(filter);
+            });
+        });
+
+        // Initial Render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCards('all');
+        });
+    </script>
+</body>
+</html>
